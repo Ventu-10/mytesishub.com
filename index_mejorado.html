@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TesisHub — Marketplace de Tesis</title>
+  <meta name="description" content="Compra y vende tesis de inversión en español. MVP inicial con catálogo y contacto." />
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #121826;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --brand: #6ee7b7;
+      --brand-2: #60a5fa;
+    }
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0; padding: 0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: radial-gradient(1000px 700px at 10% 0%, rgba(96,165,250,0.12), transparent 40%),
+                  radial-gradient(900px 600px at 90% 10%, rgba(110,231,183,0.12), transparent 40%),
+                  linear-gradient(180deg, #0b0f19 0%, #0b0f19 60%, #0e1528 100%);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1100px; margin: 0 auto; padding: 24px; }
+    header {
+      display: flex; align-items: center; justify-content: space-between; gap: 16px;
+      padding: 12px 0; position: sticky; top: 0;
+      background: rgba(11,15,25,0.7); backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(148,163,184,0.15); z-index: 10;
+    }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 700; letter-spacing: 0.2px; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--brand), var(--brand-2)); box-shadow: 0 0 40px rgba(110,231,183,0.35); }
+    nav { display: flex; gap: 16px; }
+    nav a { opacity: 0.85; }
+    nav a:hover { opacity: 1; }
+    .hero { padding: 72px 0 40px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.08; margin: 0 0 12px; }
+    .hero p { color: var(--muted); margin: 0 0 20px; font-size: 1.05rem; }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(148,163,184,0.25); padding: 12px 16px; border-radius: 12px; cursor: pointer; font-weight: 600; background: rgba(18,24,38,0.7); color: var(--text); }
+    .btn.primary { background: linear-gradient(90deg, var(--brand) 0%, var(--brand-2) 100%); color: #0b0f19; border: none; }
+    .note { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+    .card { background: rgba(18,24,38,0.7); border: 1px solid rgba(148,163,184,0.2); border-radius: 16px; padding: 18px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+    .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .section { padding: 32px 0; }
+    .section h2 { margin: 0 0 8px; font-size: clamp(22px, 3.5vw, 30px); }
+    .section p.lead { color: var(--muted); margin: 0 0 18px; }
+    .product { display: grid; gap: 10px; }
+    .cover { width: 100%; aspect-ratio: 16/10; border-radius: 12px; background: linear-gradient(135deg, #1f2937, #0b0f19); display: grid; place-items: center; color: var(--muted); font-size: 0.95rem; border: 1px dashed rgba(148,163,184,0.35); }
+    .price { font-weight: 700; }
+    .buy { opacity: 0.5; cursor: not-allowed; }
+    .about { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    footer { padding: 36px 0; color: var(--muted); font-size: 0.95rem; border-top: 1px solid rgba(148,163,184,0.15); margin-top: 32px; }
+    .badge { font-size: 0.8rem; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.25); color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+    @media (max-width: 900px) {
+      .hero { grid-template-columns: 1fr; }
+      .about { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="brand"><div class="logo" aria-hidden="true"></div> <span>TesisHub</span></div>
+    <nav>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#autores">Autores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="badge">MVP • Versión inicial</div>
+        <h1>Compra y vende <em>tesis de inversión</em></h1>
+        <p>Empezamos simple. Cuando haya ventas, añadimos pagos automáticos y panel de autores. Vamos paso a paso, sin líos.</p>
+        <div class="cta-row">
+          <button class="btn primary" onclick="scrollToId('catalogo')">Ver catálogo</button>
+          <button class="btn" onclick="scrollToId('autores')">Quiero publicar</button>
+        </div>
+        <div class="note">Los botones de compra están desactivados por ahora. Activaremos pagos en el siguiente paso.</div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Cómo funcionará</h3>
+        <ol style="margin: 8px 0 0 18px; line-height: 1.6">
+          <li>Subes tu tesis (PDF) con título, resumen y precio.</li>
+          <li>Publicamos la ficha en el catálogo.</li>
+          <li>Activamos el cobro y la entrega automática por email.</li>
+        </ol>
+        <p class="note">Más adelante: panel de autores y reparto automático.</p>
+      </div>
+    </section>
+
+    <section id="catalogo" class="section">
+      <h2>Catálogo (demo)</h2>
+      <p class="lead">Aquí aparecerán tus tesis y, si quieres, las de otros autores. De momento son tarjetas de ejemplo.</p>
+      <div class="grid">
+        <article class="product card">
+          <div class="cover">Portada de la tesis</div>
+          <h3 style="margin:0">[Tesis 1] Título de ejemplo</h3>
+          <p class="note">Resumen corto de 2–3 líneas para explicar de qué va y por qué interesa.</p>
+          <div class="price">9,00 €</div>
+          <button class="btn buy" title="Desactivado en el MVP">Comprar</button>
+        </article>
+        <article class="product card">
+          <div class="cover">Portada de la tesis</div>
+          <h3 style="margin:0">[Tesis 2] Título de ejemplo</h3>
+          <p class="note">Resumen corto de 2–3 líneas para explicar de qué va y por qué interesa.</p>
+          <div class="price">14,00 €</div>
+          <button class="btn buy" title="Desactivado en el MVP">Comprar</button>
+        </article>
+        <article class="product card">
+          <div class="cover">Portada de la tesis</div>
+          <h3 style="margin:0">[Tesis 3] Título de ejemplo</h3>
+          <p class="note">Resumen corto de 2–3 líneas para explicar de qué va y por qué interesa.</p>
+          <div class="price">19,00 €</div>
+          <button class="btn buy" title="Desactivado en el MVP">Comprar</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="autores" class="section">
+      <h2>¿Quieres publicar tu tesis?</h2>
+      <div class="about">
+        <div class="card">
+          <p style="margin-top:0">De momento, lo haremos manual para ir rápido: envía tu PDF con un título, precio y un resumen en 5 líneas. Si encaja, lo subimos al catálogo.</p>
+          <ul>
+            <li>Formato: PDF</li>
+            <li>Precio libre (recomendado 9–29€)</li>
+            <li>Resumen: 3–5 bullets de valor</li>
+          </ul>
+          <button class="btn" onclick="mailAutor()">Enviar mi tesis por email</button>
+          <p class="note">Más adelante activaremos cuentas de autor y reparto automático.</p>
+        </div>
+        <div class="card">
+          <h3 style="margin-top:0">Qué buscamos</h3>
+          <ul>
+            <li>Análisis claros, con datos y riesgos.</li>
+            <li>Catalizadores y puntos de seguimiento.</li>
+            <li>Conclusión accionable (no es recomendación).</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section card">
+      <h2>Contacto</h2>
+      <p class="lead">¿Dudas o propuestas? Escríbeme.</p>
+      <div class="cta-row">
+        <a class="btn" href="mailto:tu-email@ejemplo.com?subject=TesisHub%20—%20Contacto">Abrir email</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="padding:0">
+        © <span id="year"></span> TesisHub — MVP.
+        <span class="note">Este es un prototipo. Los pagos no están activos todavía.</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function scrollToId(id){
+      const el = document.getElementById(id);
+      if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); }
+    }
+    function mailAutor(){
+      const to = 'tu-email@ejemplo.com';
+      const subject = encodeURIComponent('Quiero publicar mi tesis');
+      const body = encodeURIComponent(
+`Hola,
+
+Quiero enviar mi tesis para el catálogo.
+
+• Título:
+• Precio propuesto:
+• Resumen (3–5 bullets):
+• Enlace al PDF (Drive/adjunto):
+
+Gracias.`);
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
