@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>mytesishub - Tesis de inversión</title>
+  <meta name="description" content="mytesishub: sube y vende tesis de inversión. Descubre análisis de la comunidad. Comisión del 10% por venta." />
+  <style>
+    :root {
+      --bg: #0b0f19;
+      --card: #121826;
+      --muted: #94a3b8;
+      --text: #e5e7eb;
+      --brand: #6ee7b7;
+      --brand-2: #60a5fa;
+      --accent: #fbbf24;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background: linear-gradient(180deg, #0b0f19 0%, #0b0f19 60%, #0e1528 100%); color: var(--text); }
+    a { color: inherit; text-decoration: none; }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 24px; }
+    header { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; position: sticky; top: 0; background: rgba(11,15,25,0.7); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(148,163,184,0.15); z-index: 10; }
+    .brand { display: flex; align-items: center; gap: 12px; font-weight: 800; letter-spacing: .3px; }
+    .logo { width: 36px; height: 36px; border-radius: 10px; background: radial-gradient(circle at 30% 30%, var(--brand), var(--brand-2)); box-shadow: 0 0 40px rgba(110,231,183,0.35); }
+    nav { display: flex; gap: 16px; }
+    nav a { opacity: 0.9; }
+    nav a:hover { opacity: 1; }
+    .hero { padding: 64px 0 28px; display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 24px; align-items: center; }
+    .hero h1 { font-size: clamp(28px, 5vw, 48px); line-height: 1.08; margin: 0 0 12px; }
+    .hero p { color: var(--muted); margin: 0 0 16px; font-size: 1.05rem; }
+    .badge { font-size: .8rem; padding: 6px 10px; border-radius: 999px; border: 1px solid rgba(148,163,184,0.25); color: var(--muted); display: inline-flex; gap: 6px; align-items: center; }
+    .controls { display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+    .chip { border: 1px solid rgba(148,163,184,0.25); padding: 8px 12px; border-radius: 999px; cursor: pointer; background: rgba(18,24,38,0.6); font-weight: 600; }
+    .chip.active { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #0b0f19; border: none; }
+    .section { padding: 28px 0; }
+    .section h2 { margin: 0 0 8px; font-size: clamp(22px, 3.5vw, 30px); }
+    .section p.lead { color: var(--muted); margin: 0 0 18px; }
+    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+    .card { background: rgba(18,24,38,0.7); border: 1px solid rgba(148,163,184,0.2); border-radius: 16px; padding: 16px; box-shadow: 0 10px 25px rgba(0,0,0,0.25); }
+    .product { display: grid; gap: 10px; }
+    .cover { width: 100%; aspect-ratio: 16/10; border-radius: 12px; background: linear-gradient(135deg, #1f2937, #0b0f19); display: grid; place-items: center; color: var(--muted); font-size: .95rem; border: 1px dashed rgba(148,163,184,0.35); }
+    .meta { display: flex; gap: 8px; align-items: center; color: var(--muted); font-size: .9rem; }
+    .price { font-weight: 800; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; border: 1px solid rgba(148,163,184,0.25); padding: 10px 14px; border-radius: 12px; cursor: pointer; font-weight: 700; background: rgba(18,24,38,0.7); color: var(--text); }
+    .btn.primary { background: linear-gradient(90deg, var(--brand), var(--brand-2)); color: #0b0f19; border: none; }
+    .two { display: grid; grid-template-columns: 1.2fr .8fr; gap: 18px; }
+    footer { padding: 36px 0; color: var(--muted); font-size: .95rem; border-top: 1px solid rgba(148,163,184,0.15); margin-top: 32px; }
+    @media (max-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } .two { grid-template-columns: 1fr; } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="brand"><div class="logo" aria-hidden="true"></div> <span>mytesishub</span></div>
+    <nav>
+      <a href="#tuyas">Tus tesis</a>
+      <a href="#comunidad">Comunidad</a>
+      <a href="#creadores">Creadores</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero">
+      <div>
+        <div class="badge">MVP • Versión inicial</div>
+        <h1>Tus tesis primero. <br/>La comunidad después.</h1>
+        <p>mytesishub es el lugar para publicar y descubrir <strong>tesis de inversión</strong>. Primero verás tus propias tesis; a medida que la comunidad publique, las verás también ordenadas por <em>recientes</em>, <em>mejor valoradas</em> o <em>más vendidas</em>.</p>
+        <div class="controls" style="margin-top:10px">
+          <span>Ordenar por:</span>
+          <button class="chip active" data-sort="recentes">Más recientes</button>
+          <button class="chip" data-sort="rating">Mejor valoradas</button>
+          <button class="chip" data-sort="ventas">Más vendidas</button>
+        </div>
+        <p class="lead" style="margin-top:8px; color: var(--muted);">*Demo sin pagos todavía. Activaremos Stripe más adelante.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">Cómo funciona</h3>
+        <ol style="margin: 0 0 8px 18px; line-height: 1.6">
+          <li>Sube tu tesis con título, resumen y precio.</li>
+          <li>Se publica en tu sección y en la de comunidad (si lo decides).</li>
+          <li>Más adelante: pagos automáticos y valoraciones verificadas.</li>
+        </ol>
+        <p class="meta">Comisión plataforma: <strong>10%</strong> por venta.</p>
+      </div>
+    </section>
+
+    <section id="tuyas" class="section">
+      <h2>🧠 Tus tesis (destacadas)</h2>
+      <p class="lead">Aquí saldrán primero tus tesis. Puedes fijar algunas como “destacadas”.</p>
+      <div class="grid" id="grid-tuyas">
+        <article class="product card" data-rating="4.8" data-ventas="120" data-fecha="2025-09-07">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">Apple — Catalizadores 2026</h3>
+          <p class="meta">★ 4.8 · 120 ventas</p>
+          <div class="price">14,00 €</div>
+          <button class="btn" disabled title="Demo">Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.6" data-ventas="85" data-fecha="2025-09-08">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">Tesla — Margen y FSD</h3>
+          <p class="meta">★ 4.6 · 85 ventas</p>
+          <div class="price">12,00 €</div>
+          <button class="btn" disabled title="Demo">Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.9" data-ventas="210" data-fecha="2025-09-06">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">IREN — IA + Minería</h3>
+          <p class="meta">★ 4.9 · 210 ventas</p>
+          <div class="price">15,00 €</div>
+          <button class="btn" disabled title="Demo">Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.7" data-ventas="60" data-fecha="2025-09-05">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">Alibaba — Re-rating 2026</h3>
+          <p class="meta">★ 4.7 · 60 ventas</p>
+          <div class="price">11,00 €</div>
+          <button class="btn" disabled title="Demo">Comprar (demo)</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="comunidad" class="section">
+      <h2>🌐 Comunidad (cuando otros publiquen)</h2>
+      <p class="lead">Aquí verás tesis de otros creadores, ordenadas con el mismo criterio.</p>
+      <div class="grid" id="grid-comunidad">
+        <article class="product card" data-rating="4.4" data-ventas="40" data-fecha="2025-09-04">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">NVIDIA — Moat de software</h3>
+          <p class="meta">★ 4.4 · 40 ventas</p>
+          <div class="price">13,00 €</div>
+          <button class="btn" disabled>Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.2" data-ventas="25" data-fecha="2025-09-03">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">ASML — Cuello de botella</h3>
+          <p class="meta">★ 4.2 · 25 ventas</p>
+          <div class="price">10,00 €</div>
+          <button class="btn" disabled>Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.5" data-ventas="55" data-fecha="2025-09-02">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">Visa — Network effects</h3>
+          <p class="meta">★ 4.5 · 55 ventas</p>
+          <div class="price">12,00 €</div>
+          <button class="btn" disabled>Comprar (demo)</button>
+        </article>
+        <article class="product card" data-rating="4.1" data-ventas="18" data-fecha="2025-09-01">
+          <div class="cover">Portada</div>
+          <h3 style="margin:0">Skechers — Margen y expansión</h3>
+          <p class="meta">★ 4.1 · 18 ventas</p>
+          <div class="price">9,00 €</div>
+          <button class="btn" disabled>Comprar (demo)</button>
+        </article>
+      </div>
+    </section>
+
+    <section id="creadores" class="section two">
+      <div class="card">
+        <h2>🧩 Para creadores</h2>
+        <p class="lead">Publica gratis. Vende tus tesis. <strong>Comisión del 10%</strong> por venta (el 90% es para ti).</p>
+        <ol style="margin: 0 0 8px 18px; line-height: 1.6">
+          <li>Envía tu PDF con título, resumen (3–5 bullets) y precio.</li>
+          <li>Revisión rápida y publicación en el catálogo.</li>
+          <li>Más adelante: crea tu cuenta de autor y cobra automático.</li>
+        </ol>
+        <div style="margin-top:10px; display:flex; gap:8px; flex-wrap:wrap;">
+          <a class="btn" href="#contacto">Quiero publicar</a>
+          <button class="btn" onclick="copyGuidelines()">Copiar guía de publicación</button>
+        </div>
+        <p class="meta" style="margin-top:8px">Transparencia: mi comisión estándar es del 10% para sostener la plataforma.</p>
+      </div>
+      <div class="card">
+        <h3 style="margin:0 0 8px">Guía rápida (copiable)</h3>
+        <pre id="guidelines" style="white-space: pre-wrap; color: var(--text); background: rgba(255,255,255,0.03); padding: 12px; border-radius: 12px; border: 1px solid rgba(148,163,184,0.2);">
+Título: [Empresa/Tema] — [Ángulo]
+Resumen (3–5 bullets):
+• Tesis en 10 min (resumen + catalizadores)
+• Números clave (márgenes, crecimiento, FCF)
+• Valoración (rango + supuestos)
+• Riesgos y qué vigilar
+Precio: [€]
+Formato: PDF (ideal 8–20 páginas)
+        </pre>
+      </div>
+    </section>
+
+    <section id="contacto" class="section card">
+      <h2>Contacto</h2>
+      <p class="lead">¿Dudas o propuestas? Escríbeme y te ayudo a publicar.</p>
+      <div style="display:flex; gap:8px; flex-wrap:wrap;">
+        <a class="btn" href="mailto:tu-email@ejemplo.com?subject=mytesishub%20-%20Contacto">Abrir email</a>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container" style="padding:0">
+        © <span id="year"></span> mytesishub — MVP. <span class="meta">Este es un prototipo sin pagos activos todavía.</span>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    function scrollToId(id){ const el = document.getElementById(id); if(el){ el.scrollIntoView({behavior:'smooth', block:'start'}); } }
+    function copyGuidelines(){
+      const el = document.getElementById('guidelines');
+      const range = document.createRange();
+      range.selectNodeContents(el);
+      const sel = window.getSelection();
+      sel.removeAllRanges(); sel.addRange(range);
+      try { document.execCommand('copy'); alert('Guía copiada. ¡Pega en tu email o WhatsApp!'); }
+      catch { alert('Copia manualmente el texto.'); }
+      sel.removeAllRanges();
+    }
+
+    const chips = document.querySelectorAll('.chip');
+    chips.forEach(c => c.addEventListener('click', () => {
+      chips.forEach(x => x.classList.remove('active')); c.classList.add('active');
+      sortGrids(c.dataset.sort);
+    }));
+
+    function sortGrids(mode){
+      ['grid-tuyas','grid-comunidad'].forEach(id => {
+        const grid = document.getElementById(id);
+        const cards = Array.from(grid.children);
+        cards.sort((a,b)=>{
+          if(mode==='rating') return (+b.dataset.rating) - (+a.dataset.rating);
+          if(mode==='ventas') return (+b.dataset.ventas) - (+a.dataset.ventas);
+          return new Date(b.dataset.fecha) - new Date(a.dataset.fecha);
+        });
+        cards.forEach(card => grid.appendChild(card));
+      });
+    }
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
